@@ -54,10 +54,8 @@ jobs:
       - name: Pull image from Docker Hub
         run: |
           docker pull khalilz00/mon-nginx-image:latest
-          
-          
-          
-          # script: |
-          #   docker pull khalilz00/mon-nginx-image:latest
-          #   docker-compose -f your-docker-compose-file.yml up -d
+      - name: Run image from Docker Hub
+        run: |
+          docker run -d -p 80:80 khalilz00/mon-nginx-image:latest
+        
 
