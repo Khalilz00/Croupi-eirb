@@ -50,9 +50,7 @@ jobs:
       - name: Deploy via SSH
         uses: webfactory/ssh-agent@v0.9.0
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
+          ssh-private-key: ${{ secrets.SSH_KEY }}
           script: |
             docker pull khalilz00/mon-nginx-image:latest
             docker-compose -f your-docker-compose-file.yml up -d
