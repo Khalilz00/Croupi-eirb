@@ -27,7 +27,7 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t your-docker-image-name:latest .
+          docker build -t khalilz00/mon-nginx-image:latest .
 
   push:
     runs-on: self-hosted
@@ -41,7 +41,7 @@ jobs:
 
       - name: Push Docker Image
         run: |
-          docker push your-docker-image-name:latest
+          docker push khalilz00/mon-nginx-image:latest
 
   deploy:
     runs-on: self-hosted
@@ -54,6 +54,6 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            docker pull your-docker-image-name:latest
+            docker pull khalilz00/mon-nginx-image:latest
             docker-compose -f your-docker-compose-file.yml up -d
 
