@@ -47,11 +47,17 @@ jobs:
     runs-on: self-hosted
     needs: push
     steps:
-      - name: Deploy via SSH
+      - name: Login to SSH
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_KEY }}
-          script: |
-            docker pull khalilz00/mon-nginx-image:latest
-            docker-compose -f your-docker-compose-file.yml up -d
+      - name: Pull image from Docker Hub
+        run: |
+          docker pull khalilz00/mon-nginx-image:latest
+          
+          
+          
+          # script: |
+          #   docker pull khalilz00/mon-nginx-image:latest
+          #   docker-compose -f your-docker-compose-file.yml up -d
 
